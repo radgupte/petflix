@@ -1,23 +1,17 @@
-import React from "react";
+import React from 'react';
 
 interface InputProps {
-    id: string;
-    onChange: any;
-    value: string;
-    label: string;
-    type?: string;
+  id: string;
+  onChange: any;
+  value: string;
+  label: string;
+  type?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-    id,
-    onChange,
-    value,
-    label,
-    type
-}) => {
-return(
+const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
+  return (
     <div className="relative">
-        <input
+      <input
         onChange={onChange}
         type={type}
         value={value}
@@ -38,9 +32,9 @@ return(
             peer
         "
         placeholder=" "
-    />
-    <label 
-    className="
+      />
+      <label
+        className="
         absolute
         text-md
         text-zinc-400
@@ -57,11 +51,12 @@ return(
         peer-focus:scale-75
         peer-focus:-translate-y-3
     "
-    htmlFor={id}>
+        htmlFor={id}
+      >
         {label}
-    </label>
+      </label>
     </div>
-)
-}
+  );
+};
 
 export default Input;
