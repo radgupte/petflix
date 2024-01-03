@@ -1,13 +1,15 @@
-import { NextPageContext } from 'next';
-import { getSession } from 'next-auth/react';
+import { GetServerSidePropsContext } from 'next';
+// import { getSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
 import Navbar from '@/components/navbar';
 import Billboard from '@/components/billboard';
 import MovieList from '@/components/movieList';
 import useMovieList from '@/hooks/useMovieList';
 import useFavorites from '@/hooks/useFavourites';
+import { authOptions } from './api/auth/[...nextauth]';
 
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await getServerSession(context.req, context.res, authOptions);
 
   if (!session) {
     return {
