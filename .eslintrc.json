@@ -9,6 +9,7 @@
     "next/core-web-vitals"
   ],
   "rules": {
+    "@next/next/no-img-element": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js",".jsx",".ts",".tsx"] }]
   },
   "parserOptions": {
