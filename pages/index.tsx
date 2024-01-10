@@ -7,6 +7,8 @@ import MovieList from '@/components/movieList';
 import useMovieList from '@/hooks/useMovieList';
 import useFavorites from '@/hooks/useFavourites';
 import { authOptions } from './api/auth/[...nextauth]';
+import InfoModal from '@/components/infoModal';
+import useInfoModal from '@/hooks/useInfoModal';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions);
@@ -28,8 +30,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 export default function Home() {
   const { data: movies = [] } = useMovieList();
   const { data: favorites = [] } = useFavorites();
+  const { isOpen, closeModal } = useInfoModal();
+
   return (
     <>
+      <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <Billboard />
       <div className="pb-40">
